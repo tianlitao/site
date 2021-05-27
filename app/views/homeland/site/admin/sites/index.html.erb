@@ -20,7 +20,7 @@
     <% @sites.each do |item| %>
       <tr class="<%= cycle("","even") %><%= ' deleted' if !item.deleted_at.blank? %>">
         <td><%= item.id %></td>
-        <td><%= image_tag(item.favicon_url, style: "width:16px;height:16px;")%> <%= item.name %></td>
+        <td><%= image_tag(item.avatar&.url, style: "width:16px;height:16px;")%> <%= item.name %></td>
         <td>
           <%= link_to item.url,item.url, target: "_blank" %><br>
           <small class="muted"><%= item.desc %></small>

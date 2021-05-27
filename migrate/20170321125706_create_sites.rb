@@ -16,6 +16,7 @@ class CreateSites < ActiveRecord::Migration[5.0]
       t.integer  'site_node_id'
       t.string   'name',         null: false
       t.string   'url',          null: false
+      t.string   'avatar'
       t.string   'desc'
       t.datetime 'deleted_at'
       t.datetime 'created_at'

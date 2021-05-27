@@ -25,7 +25,7 @@ module Homeland::Site
     private
 
       def site_params
-        params.require(:site).permit(:name, :desc, :url, :favorite, :site_node_id)
+        params.require(:site).permit(:name, :desc, :url, :avatar, :favorite, :site_node_id)
       end
   end
 end

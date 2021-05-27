@@ -9,6 +9,13 @@ class Site < ApplicationRecord
   validates :url, :name, :site_node_id, presence: true
   validates :url, format: { with: /https?:\/\/[\S]+/ }, uniqueness: { case_sensitive: false }
 
+  mount_uploader :avatar, ::AvatarUploader
+  after_commit :remove_avatar!, on: :destroy
+
+  define_method :avatar? do
+    self[:avatar].present?
+  end
+
   after_save :update_cache_version
   after_destroy :update_cache_version
   def update_cache_version

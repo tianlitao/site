@@ -1,6 +1,6 @@
 "zh-CN":
   plugin:
-    site: 酷站
+    site: 生态项目
   simple_form:
     hints:
       site:
@@ -9,8 +9,8 @@
         favicon: '此网站的 Favicon，不填将会用 Google 来分析此网站的图标.'
   activerecord:
     models:
-      site: 酷站
-      site_node: 酷站分类
+      site: 生态项目
+      site_node: 生态分类
     attributes:
       site:
         name: 网站名称
