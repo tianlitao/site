@@ -25,9 +25,10 @@ module Homeland::Site
       end
 
       def create
-        @site = ::Site.new(params[:site].permit!)
-
+        @site = ::Site.new(params[:site].except(:avatar).permit!)
+        @site.user_id = current_user.id
         if @site.save
+          @site.update(avatar:params[:site][:avatar])
           redirect_to(admin_sites_path, notice: "Site 创建成功。")
         else
           render action: "new"

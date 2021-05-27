@@ -9,7 +9,7 @@ class Site < ApplicationRecord
   validates :url, :name, :site_node_id, presence: true
   validates :url, format: { with: /https?:\/\/[\S]+/ }, uniqueness: { case_sensitive: false }
 
-  mount_uploader :avatar, ::AvatarUploader
+  mount_uploader :avatar, AvatarUploader
   after_commit :remove_avatar!, on: :destroy
 
   define_method :avatar? do
@@ -24,9 +24,7 @@ class Site < ApplicationRecord
   end
 
   def favicon_url
-    return "" if url.blank?
-    domain = URI.parse(url.strip).host.sub("www.", "")
-    "https://favicon.ruby-china.com/ip2/#{domain}.ico"
+    self.avatar.url.to_s
   rescue
     ""
   end
